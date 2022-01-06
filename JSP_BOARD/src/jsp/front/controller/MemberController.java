@@ -72,6 +72,7 @@ public class MemberController extends HttpServlet {
 				return;
 			}
 			view = com.requestPro(request, response);
+			System.out.println(view);
 		} catch (Throwable e) {
 			throw new ServletException(e);
 		}

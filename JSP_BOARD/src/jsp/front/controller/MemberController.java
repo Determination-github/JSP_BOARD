@@ -77,7 +77,7 @@ public class MemberController extends HttpServlet {
 			URI = request.getRequestURI(); 
 			System.out.println(URI);// /JSP_BOARD/LoginForm.do
 			String command = URI.substring(URI.lastIndexOf("/")+1);
-			System.out.println(command);// /LoginForm.do
+			System.out.println(command);// LoginForm.do
 			action = commandMap.get(command); //command = KEY값
 			System.out.println(action);
 			if(action == null) {
@@ -86,12 +86,15 @@ public class MemberController extends HttpServlet {
 			}
 			
 			forward = action.execute(request, response);
+			String path = forward.getPath();
+			System.out.println("path "+path);
 			System.out.println(forward);
 			
 			if(forward != null) {
 				if(forward.isRedirect()) {
 					response.sendRedirect(forward.getPath());
 				} else {
+					//getRequestDispatcher(상대경로)
 					RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 					dispatcher.forward(request, response);
 				}

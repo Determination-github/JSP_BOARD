@@ -3,6 +3,7 @@ package jsp.member.model.members;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import jsp.common.util.DBConnection;
 
@@ -61,6 +62,34 @@ public class MemberDAO {
 			dbConnection.freeConnection(conn, pstmt, rs); //연결 종료
 		}
 		return result;
+	}
+	
+	public void joinMember(MemberBean member) throws SQLException{
+		int result = 0;
+		DBConnection dbConnection = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			dbConnection = DBConnection.getInstance();
+			StringBuffer sql = new StringBuffer();
+			sql.append("INSERT INTO JSP_MEMBER(MEMBER_ID, MEMBER_PWD, MEMBER_EMAIL, MEMBER_NAME) VALUES (?, ?, ?, ?)");
+			
+			conn = dbConnection.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, member.getMemberID());
+			pstmt.setString(2, member.getMemberPWD());
+			pstmt.setString(3, member.getMemberEmail());
+			pstmt.setString(4, member.getMemberName());
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbConnection.freeConnection(conn, pstmt); //conn, pstmt 닫기
+		}
 	}
 	
 }

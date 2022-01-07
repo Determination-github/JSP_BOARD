@@ -31,40 +31,39 @@
       }
     </style>
     <script type="text/javascript">
-       function changeView(value){
-           
-           if(value == "0") // 회원가입 버튼 클릭시 첫화면으로 이동
-           {
-               location.href="main.jsp";
-           }
-           else if(value == "1") // 로그인 버튼 클릭시 로그인 화면으로 이동
-           {
+       function changeLoginView(value){
+           // 회원가입 버튼 클릭시 회원가입 화면으로 이동
                location.href="SignUpForm.do";
-           }
        }
        
-       function loginAction() {
+       function loginCheckAction() {
     	   
-    	   inputID = document.loginInfo.floatingInput;
-    	   if(!inputID) {
+    	  /*  inputID = document.loginInfo.memberID.value;
+    	   inputPWD = document.loginInfo.memberPWD.value; */
+    	   let formName = document.loginInfo;
+    	   
+    	   let inputID = formName.memberID.value;
+    	   let inputPWD = formName.memberPWD.value;
+    	   
+    	   if(inputID == "") { //아이디가 없으면
     		   alert("아이디를 입력하세요");
-    		   inputID.id.focus();
+    		   formName.memberID.focus();
     		   return false;
     	   }
-    	   inputPWD = document.loginInfo.floatingPassword;
-    	   if(!inputPWD) {
-    		   alert("아이디를 입력하세요");
-    		   inputPWD.id.focus();
+    	   if(inputPWD == "") { //비밀번호가 없으면
+    		   alert("비밀번호를 입력하세요");
+    		   formName.memberID.focus();
     		   return false;
     	   }
        }
+       
     </script>
     <link href = "${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
-    <title>Hello, world!</title>
+    <title>로그인 페이지</title>
   </head>
   <body class="text-center">
 	<main class="form-signin">
-	  <form name="loginInfo" method="post" action="MemberLoginAction.do" onsubmit="return loginAction()">	  
+	  <form name="loginInfo" method="post" action="MemberLoginAction.do" onsubmit="return loginCheckAction()">	  
 	    <img class="mb-4" src="${pageContext.request.contextPath}/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
 	    <h1 class="h3 mb-3 fw-normal">로그인</h1>
 	
@@ -81,7 +80,7 @@
 	       	  <c:if test="${sessionScope.sessionID==null}">
 	         	 <p class="m-0">
 	            	계정이 없으신가요 ? <br>
-	            	<a id="SignUpBtn" onclick="changeView(1)" >회원가입하러 가기</a>
+	            	<a id="SignUpBtn" onclick="changeLoginView()" >회원가입하러 가기</a>
 	       	     </p>
        	      </c:if>
 	        </div>

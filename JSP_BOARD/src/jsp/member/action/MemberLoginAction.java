@@ -26,13 +26,14 @@ public class MemberLoginAction implements Action{
 			forward.setRedirect(false);
 			forward.setPath("LoginForm.do");
 			
+			
 		} else if (check == -1) {
 			request.setAttribute("fail", "-1");
 			forward.setRedirect(false);
 			forward.setPath("LoginForm.do");
 			
 		} else if (check == 1) {
-			request.setAttribute("sessionID", id);
+			session.setAttribute("memberID", id);
 			forward.setRedirect(true);
 			forward.setPath("main.do");
 		}

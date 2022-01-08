@@ -4,7 +4,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -50,7 +49,5 @@
     		</div>
   		</div>
 	</div>
-    <script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.js"></script>	
   </body>
 </html>

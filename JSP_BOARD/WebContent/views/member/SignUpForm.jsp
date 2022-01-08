@@ -4,9 +4,7 @@
 <html>
 <head>
  <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1">
  <title>회원가입 페이지</title>
- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
  <style>
  	.py-4{
  	  margin-top: 50px;
@@ -24,7 +22,7 @@
 	  width: 100%;
 	  z-index: 0;
 	}
-	#loginBtn{
+	#loginButton{
 	  text-decoration: underline;
 	  color: #0064FF;
 	}
@@ -112,17 +110,13 @@
 	          </div>
 	        </form>
 	        <div class="bg-white py-4 px-5 text-center border mt-4">
-	       	  <c:if test="${sessionScope.sessionID==null}">
 	         	 <p class="m-0">
-	            	계정이 있으신가요 ? <a id="loginBtn" onclick="changeSignUpView(1)">로그인하러 가기</a>
+	            	계정이 있으신가요 ? <a id="loginButton" onclick="changeSignUpView(1)">로그인하러 가기</a>
 	       	     </p>
-       	      </c:if>
 	        </div>
 	      </div>
 	    </div>
 	  </div>
 	</section>
-	<script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
  </body>
 </html>

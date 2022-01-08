@@ -7,7 +7,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 	<style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -22,6 +22,9 @@
           font-size: 3.5rem;
         }
       }
+      a {
+      	cursor: pointer;
+      }
     </style>
     
     <script type="text/javascript">
@@ -30,7 +33,7 @@
             
             if(value == "0") // HOME 버튼 클릭시 첫화면으로 이동
             {
-                location.href="main.jsp";
+                location.href="main.do";
             }
             else if(value == "1") // 로그인 버튼 클릭시 로그인 화면으로 이동
             {
@@ -39,11 +42,11 @@
             else if(value == "2") // 회원가입 버튼 클릭시 회원가입 화면으로 이동
             {
                 location.href="SignUpForm.do";
-            }/*
+            }
             else if(value == "3") // 로그아웃 버튼 클릭시 로그아웃 처리
             {
-                location.href="member/pro/LogoutPro.jsp";
-            } */
+                location.href="MemberLogoutAction.do";
+            }
         }
     </script>
 
@@ -73,9 +76,12 @@
 	  		</button>
 	 	  	<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 	 	  		<!-- // 로그인 안되었을 경우 - 로그인, 회원가입 버튼을 보여준다. -->
-				<c:if test="${sessionScope.sessionID==null}">
+				<c:if test="${sessionScope.memberID==null}">
 		  			<li><a id="loginBtn" class="dropdown-item" onclick="changeView(1)">로그인</a></li>
 		    		<li><a id="joinBtn" class="dropdown-item" onclick="changeView(2)">회원가입</a></li>
+		    	</c:if>
+				<c:if test="${sessionScope.memberID!=null}">
+		  			<li><a id="loginBtn" class="dropdown-item" onclick="changeView(3)">로그아웃</a></li>
 		    	</c:if>
 	 		</ul>
 		  </div>

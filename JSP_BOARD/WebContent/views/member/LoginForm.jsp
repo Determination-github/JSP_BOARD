@@ -6,8 +6,6 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 	<style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -38,8 +36,6 @@
        
        function loginCheckAction() {
     	   
-    	  /*  inputID = document.loginInfo.memberID.value;
-    	   inputPWD = document.loginInfo.memberPWD.value; */
     	   let formName = document.loginInfo;
     	   
     	   let inputID = formName.memberID.value;
@@ -87,8 +83,21 @@
 	    <p class="mt-5 mb-3 text-muted">&copy; Determination</p>
 	  </form>
 	</main>
-	<script src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+	<c:set var="failMessage" value="${requestScope.fail}"/>
+		<c:if test="${failMessage!=null}">	
+			<c:choose>
+				<c:when test="${failMessage=='0'}">
+					<script type="text/javascript">
+						alert("사용자 정보가 일치하지 않습니다.");
+					</script>
+				</c:when>
+				<c:otherwise>
+					<script type="text/javascript">
+						alert("사용자 정보가 일치하지 않습니다.");
+					</script>
+				</c:otherwise>
+			</c:choose>
+		</c:if>
     
   </body>
 </html>

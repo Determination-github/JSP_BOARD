@@ -22,6 +22,40 @@ public class MemberDAO {
 		} return instance;
 	}
 	
+	public MemberBean inquireData(String id) {
+		DBConnection dbConnection = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberBean member = null;
+		
+		try {
+			dbConnection = DBConnection.getInstance();			
+			StringBuffer sql = new StringBuffer(); //멀티쓰레드에서는 StringBuffer가 안전
+			sql.append("SELECT * FROM JSP_MEMBER WHERE MEMBER_ID=?");
+			
+			conn = dbConnection.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				member = new MemberBean();
+				member.setMemberID(rs.getString("MEMBER_ID"));
+				member.setMemberPWD(rs.getString("MEMBER_PWD"));
+				member.setMemberName(rs.getString("MEMBER_NAME"));
+				member.setMemberEmail(rs.getString("MEMBER_EMAIL"));
+				member.setMemberReg(rs.getDate("MEMBER_REG"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbConnection.freeConnection(conn, pstmt, rs); //연결 종료
+		}
+		return member;
+	}
+	
 	
 	public int loginCheck(String id, String pwd) {
 		

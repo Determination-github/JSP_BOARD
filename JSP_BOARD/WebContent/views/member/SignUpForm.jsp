@@ -25,10 +25,12 @@
 	#loginButton{
 	  text-decoration: underline;
 	  color: #0064FF;
-	}
+	}  
 	#loginBtn:hover{
 	  cursor: pointer;
 	}
+	
+	
  </style>
  <script type="text/javascript">
         
@@ -54,6 +56,7 @@
      	   let inputName = formName.memberName.value;
        	   let inputID = formName.memberID.value;
     	   let inputPWD = formName.memberPWD.value;
+    	   let pwdCheck = formName.memberPWDCheck.value;
      	   
      	   
      	   if(inputEmail == "") { //이메일이 없으면
@@ -73,10 +76,19 @@
     	   }
      	   if(inputPWD == "") { //비밀번호가 없으면
     		   alert("비밀번호를 입력하세요");
-    		   formName.memberID.focus();
+    		   formName.memberPWD.focus();
     		   return false;
     	   }
+     	   if(inputPWD != pwdCheck) {
+     		   alert("비밀번호가 동일하지 않습니다.");
+     		   formName.memberPWDCheck.focus();
+     		   return false;
+     	   }
         }
+       
+       	function() {
+				
+       	}
    </script>
 </head>
  <body class="text-center">
@@ -95,13 +107,19 @@
 	            <input class="form-control" name="memberEmail" placeholder="Email" type="email" /><label>이메일</label>
 	          </div>
 	          <div class="form-floating mb-3">
-	            <input class="form-control" name="memberName" placeholder="Full Name" type="text" /><label>이름</label>
+	            <input class="form-control" name="memberName" placeholder="UserName" type="text" /><label>이름</label>
 	          </div>
 	          <div class="form-floating mb-3">
-	            <input class="form-control" name="memberID" placeholder="Username" type="text" /><label>아이디</label>
+	            <input class="form-control" name="memberID" placeholder="ID" type="text" /><label>아이디</label>
+	          </div>
+	          <div class="mb-2">
+	            <button class="btn btn-primary fw-bold w-100 bg-gradient" type="submit" onclick="idCheck()">아이디 중복 확인</button>
 	          </div>
 	          <div class="form-floating mb-3">
 	            <input class="form-control" name="memberPWD" placeholder="Password" type="password" /><label>비밀번호</label>
+	          </div>
+	          <div class="form-floating mb-3">
+	            <input class="form-control" name="memberPWDCheck" placeholder="Password" type="password" /><label>비밀번호 확인</label>
 	          </div>
 	          <div class="mb-2">
 	            <button class="btn btn-primary fw-bold w-100 bg-gradient" type="submit">회원 가입</button>

@@ -43,7 +43,11 @@
             {
                 location.href="SignUpForm.do";
             }
-            else if(value == "3") // 로그아웃 버튼 클릭시 로그아웃 처리
+            else if(value == "3") // 회원정보 버튼 클릭시 회원정보 상세보기 화면으로 이동
+            {
+                location.href="PwdCheckForm.do";
+            }
+            else if(value == "4") // 로그아웃 버튼 클릭시 로그아웃 처리
             {
                 location.href="MemberLogoutAction.do";
             }
@@ -81,7 +85,8 @@
 		    		<li><a id="joinBtn" class="dropdown-item" onclick="changeView(2)">회원가입</a></li>
 		    	</c:if>
 				<c:if test="${sessionScope.memberID!=null}">
-		  			<li><a id="loginBtn" class="dropdown-item" onclick="changeView(3)">로그아웃</a></li>
+		  			<li><a id="loginBtn" class="dropdown-item" onclick="changeView(3)">회원정보</a></li>
+		  			<li><a id="loginBtn" class="dropdown-item" onclick="changeView(4)">로그아웃</a></li>
 		    	</c:if>
 	 		</ul>
 		  </div>

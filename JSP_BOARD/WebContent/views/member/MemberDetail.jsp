@@ -26,12 +26,45 @@
 		</style>
 		
 		<script type="text/javascript">
-			function changeDetailView(value) {
-				if(value == 0) {
-					location.href = "main.do";
-				}
+			function changeDetailView() {
+				location.href = "main.do";
 			}
-		
+			
+			function btnActive() {
+				
+				const pwd = document.getElementById('pwd');
+				const username = document.getElementById('username');
+				const email = document.getElementById('email');
+				$(pwd).removeAttr('disabled');
+				$(username).removeAttr('disabled');
+				$(email).removeAttr('disabled');
+			}
+			
+			function detailCheckAction() {
+		    	   
+		    	   let formName = document.detailInfo;
+		    	   
+		    	   let inputPWD = formName.memberPWD.value;
+		    	   let inputEmail = formName.memberEmail.value;
+		    	   let inputName = formName.memberName.value;
+		    	   
+		    	   
+		    	   if(inputPWD == "") { //비밀번호가 없으면
+		    		   alert("비밀번호를 입력하세요");
+		    		   formName.memberPWD.focus();
+		    		   return false;
+		    	   }
+		    	   else if(inputEmail == "") { //메일이 없으면
+		    		   alert("메일을 입력하세요");
+		    		   formName.memberEmail.focus();
+		    		   return false;
+		    	   }
+		    	   else if(inputName == "") { //이름이 없으면
+		    		   alert("이름을 입력하세요");
+		    		   formName.memberName.focus();
+		    		   return false;
+		    	   }
+		       }
 		</script>
 
 		<!-- Custom styles for this template -->
@@ -52,44 +85,45 @@
 				
 				<div class="py-2">
   					<h4 class="mb-3">회원 상세정보</h4>
-					<form class="needs-validation" novalidate>
+					<form class="needs-validation" name="detailInfo" method="post" action="MemberModifyAction.do" onsubmit="return detailCheckAction()">
 						<div class="row g-3">
 	      					<div class="col-sm-6">
 	        				<label for="firstName" class="form-label">아이디</label>
-	        				<input type="text" class="form-control" id="firstName" placeholder="" value="${member.memberID}" disabled>
+	        				<input type="text" class="form-control" id="id" name="memberID" placeholder="ID" value="${member.memberID}" disabled>
 	      					</div>
 	      			
 		      				<div class="col-sm-6">
 			        		<label for="lastName" class="form-label">비밀번호</label>
-			        		<input type="text" class="form-control" id="lastName" placeholder="" value="${member.memberPWD}" disabled>
+			        		<input type="text" class="form-control" id="pwd" name="memberPWD" placeholder="Password" value="${member.memberPWD}" disabled>
 		      				</div>
 		      		
 							<div class="col-12">
 					  		<label for="username" class="form-label">이름</label>
 					 		<div class="input-group has-validation">
-						    <input type="text" class="form-control" id="username" placeholder="Username" value="${member.memberName}" disabled>
+						    <input type="text" class="form-control" id="username" name="memberName" placeholder="Username" value="${member.memberName}" disabled>
 						  	</div>
 							</div>
 		
 							<div class="col-12">
 							  <label for="email" class="form-label">이메일</label>
-							  <input type="email" class="form-control" id="email" placeholder="you@example.com" value="${member.memberEmail}" disabled>
+							  <input type="email" class="form-control" id="email" name="memberEmail" placeholder="you@example.com" value="${member.memberEmail}" disabled>
 							</div>
 		
 							<div class="col-12">
 							  <label for="address" class="form-label" >가입일자</label>
-							  <input type="text" class="form-control" id="address" placeholder="2022-01-01" value="${member.memberReg}" disabled>
+							  <input type="text" class="form-control" id="date" placeholder="2022-01-01" value="${member.memberReg}" disabled>
 							</div>
 						</div>
-		
+						<hr class="my-4">
+					    	<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+		        				<button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="changeDetailView()">메인화면으로 이동</button>
+		        				<button type="button" id="buttonModify" class="btn btn-outline-secondary btn-lg px-4" onclick="btnActive()">회원정보 수정</button>
+		        				<button type="button" id="buttonDelete" class="btn btn-outline-secondary btn-lg px-4" onclick="">회원정보 삭제(탈퇴)</button>
+		        				<input type="submit" id="buttonDelete" class="btn btn-outline-secondary btn-lg px-4" value="확인"></button>
+	      					</div>
+						</div>
 					</form>
-				    <hr class="my-4">
-				    	<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-	        				<button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="changeDetailView(0)">메인화면으로 이동</button>
-        				<button type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="changeDetailView(1)">회원정보 수정</button>
-        				<button type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="changeDetailView(2)">회원정보 삭제(탈퇴)</button>
-      				</div>
-				</div>
+				    
 			</main>
 
 			<footer class="my-5 pt-5 text-muted text-center text-small">

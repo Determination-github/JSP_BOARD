@@ -1,5 +1,7 @@
 package jsp.member.action;
 
+import java.sql.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,8 +17,10 @@ public class MemberLoginAction implements Action{
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		
+		
 		String id = request.getParameter("memberID");
 		String password = request.getParameter("memberPWD");
+		
 		
 		MemberDAO mDAO = MemberDAO.getInstance();
 		int check = mDAO.loginCheck(id, password);
@@ -34,6 +38,7 @@ public class MemberLoginAction implements Action{
 			
 		} else if (check == 1) {
 			session.setAttribute("memberID", id);
+			session.setAttribute("memberPWD", password);
 			forward.setRedirect(true);
 			forward.setPath("main.do");
 		}

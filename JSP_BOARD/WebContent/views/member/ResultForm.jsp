@@ -32,22 +32,43 @@
        }
        
     </script>
-    <title>회원가입을 축하드립니다!</title>
+    <title>요청이 완료되었습니다.</title>
   </head>
   <body class="text-center">
-	<div class="modal modal-alert position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalChoice">
-  		<div class="modal-dialog" role="document">
-    		<div class="modal-content rounded-4 shadow">
-      			<div class="modal-body p-4 text-center">
-       				<h5 class="mb-0">로그인 하시겠습니까?</h5>
-        			<p class="mb-0">회원가입한 정보로 로그인 해주세요.</p>
-     		    </div>
-      			<div class="modal-footer flex-nowrap p-0">
-        			<button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right" onclick="changeResultView(0)"><strong>네. 로그인 하겠습니다.</strong></button>
-        			<button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal" onclick="changeResultView(1)">아니요. 괜찮습니다.</button>
-      			</div>
-    		</div>
-  		</div>
-	</div>
+  <c:set var="msg" value="${sessionScope.msg}" scope="session"/>
+  	<c:choose>
+  	<c:when test="${msg!=null && msg=='0'}">
+		<div class="modal modal-alert position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalChoice">
+	  		<div class="modal-dialog" role="document">
+	    		<div class="modal-content rounded-4 shadow">
+	      			<div class="modal-body p-4 text-center">
+	       				<h5 class="mb-0">로그인 하시겠습니까?</h5>
+	        			<p class="mb-0">회원가입한 정보로 로그인 해주세요.</p>
+	     		    </div>
+	      			<div class="modal-footer flex-nowrap p-0">
+	        			<button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right" onclick="changeResultView(0)"><strong>네. 로그인 하겠습니다.</strong></button>
+	        			<button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal" onclick="changeResultView(1)">아니요. 괜찮습니다.</button>
+	      			</div>
+	    		</div>
+	  		</div>
+		</div>
+	</c:when>
+  	<c:when test="${msg!=null && msg=='1'}">
+		<div class="modal modal-alert position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalChoice">
+	  		<div class="modal-dialog" role="document">
+	    		<div class="modal-content rounded-4 shadow">
+	      			<div class="modal-body p-4 text-center">
+	       				<h5 class="mb-0">회원정보가 수정되었습니다.</h5>
+	        			<p class="mb-0">수정된 정보로 로그인 해주세요.</p>
+	     		    </div>
+	      			<div class="modal-footer flex-nowrap p-0">
+	        			<button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right" onclick="changeResultView(0)"><strong>네. 로그인 하겠습니다.</strong></button>
+	        			<button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal" onclick="changeResultView(1)">아니요. 괜찮습니다.</button>
+	      			</div>
+	    		</div>
+	  		</div>
+		</div>
+	</c:when>
+	</c:choose>
   </body>
 </html>

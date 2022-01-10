@@ -2,6 +2,7 @@ package jsp.member.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jsp.common.action.Action;
 import jsp.common.action.ActionForward;
@@ -15,6 +16,7 @@ public class MemberJoinAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		ActionForward forward = new ActionForward();
+		HttpSession session = request.getSession();
 		
 		MemberDAO mDAO = MemberDAO.getInstance();
 		
@@ -31,6 +33,8 @@ public class MemberJoinAction implements Action {
 		//회원가입 후 화면 전환
 		forward.setRedirect(true);
 		forward.setPath("ResultForm.do");
+		
+		request.getSession().setAttribute("msg", "0");
 		
 		return forward;
 	}

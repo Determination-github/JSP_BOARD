@@ -126,4 +126,30 @@ public class MemberDAO {
 		}
 	}
 	
+	public void updateMember(MemberBean member) throws SQLException{
+		DBConnection dbConnection = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			StringBuffer sql = new StringBuffer();
+			sql.append("UPDATE JSP_MEMBER SET MEMBER_PWD=?, MEMBER_EMAIL=?, MEMBER_NAME=? WHERE MEMBER_ID=?");
+			
+			dbConnection = DBConnection.getInstance();
+			conn = dbConnection.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, member.getMemberPWD());
+			pstmt.setString(2, member.getMemberEmail());
+			pstmt.setString(3, member.getMemberName());
+			pstmt.setString(4, member.getMemberID());
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbConnection.freeConnection(conn, pstmt);
+		}
+	}
+	
 }

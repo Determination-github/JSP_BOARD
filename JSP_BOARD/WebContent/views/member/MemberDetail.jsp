@@ -30,7 +30,7 @@
 				location.href = "main.do";
 			}
 			
-			function btnActive() {
+			function btnModify() {
 				
 				const pwd = document.getElementById('pwd');
 				const username = document.getElementById('username');
@@ -117,8 +117,8 @@
 						<hr class="my-4">
 					    	<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
 		        				<button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="changeDetailView()">메인화면으로 이동</button>
-		        				<button type="button" id="buttonModify" class="btn btn-outline-secondary btn-lg px-4" onclick="btnActive()">회원정보 수정</button>
-		        				<button type="button" id="buttonDelete" class="btn btn-outline-secondary btn-lg px-4" onclick="">회원정보 삭제(탈퇴)</button>
+		        				<button type="button" id="buttonModify" class="btn btn-outline-secondary btn-lg px-4" onclick="btnModify()">회원정보 수정</button>
+		        				<button type="button" id="buttonDelete" class="btn btn-outline-secondary btn-lg px-4" onclick="bt">회원정보 삭제(탈퇴)</button>
 		        				<input type="submit" id="buttonDelete" class="btn btn-outline-secondary btn-lg px-4" value="확인"></button>
 	      					</div>
 						</div>

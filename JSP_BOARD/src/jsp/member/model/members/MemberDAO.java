@@ -152,4 +152,27 @@ public class MemberDAO {
 		}
 	}
 	
+	public void deleteMember(String id) {
+		DBConnection dbConnection = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			StringBuffer sql = new StringBuffer();
+			sql.append("DELETE FROM JSP_MEMBER WHERE MEMBER_ID=?");
+			
+			dbConnection = DBConnection.getInstance();
+			conn = dbConnection.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, id);
+						
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbConnection.freeConnection(conn, pstmt);
+		}
+	}
+	
 }

@@ -48,7 +48,7 @@
     	   }
     	   if(inputPWD == "") { //비밀번호가 없으면
     		   alert("비밀번호를 입력하세요");
-    		   formName.memberID.focus();
+    		   formName.memberPWD.focus();
     		   return false;
     	   }
        }

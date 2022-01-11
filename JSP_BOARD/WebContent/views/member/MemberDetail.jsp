@@ -65,6 +65,15 @@
 		    		   return false;
 		    	   }
 		       }
+			
+			function btnDelete() {
+				if(confirm("정말로 삭제하시겠습니까?")){
+					location.href="MemberDeleteAction.do"
+					return true;
+				} else {
+					return false;
+				}
+			}
 		</script>
 
 		<!-- Custom styles for this template -->
@@ -118,12 +127,11 @@
 					    	<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
 		        				<button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="changeDetailView()">메인화면으로 이동</button>
 		        				<button type="button" id="buttonModify" class="btn btn-outline-secondary btn-lg px-4" onclick="btnModify()">회원정보 수정</button>
-		        				<button type="button" id="buttonDelete" class="btn btn-outline-secondary btn-lg px-4" onclick="bt">회원정보 삭제(탈퇴)</button>
+		        				<button type="button" id="buttonDelete" class="btn btn-outline-secondary btn-lg px-4" onclick="btnDelete()">회원정보 삭제(탈퇴)</button>
 		        				<input type="submit" id="buttonDelete" class="btn btn-outline-secondary btn-lg px-4" value="확인"></button>
 	      					</div>
 						</div>
 					</form>
-				    
 			</main>
 
 			<footer class="my-5 pt-5 text-muted text-center text-small">

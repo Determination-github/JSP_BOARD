@@ -51,6 +51,10 @@
             {
                 location.href="MemberLogoutAction.do";
             }
+            else if(value == "5") // 보드 버튼 클릭시 보드 게시판 화면으로 이동
+            {
+                location.href="BoardListAction.bo";
+            }
         }
     </script>
 
@@ -71,7 +75,7 @@
 	          <a class="nav-link active" aria-current="page" href="#">Home</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">Board</a>
+	          <a class="nav-link" onclick="changeView(5)">Board</a>
 	        </li>
 	      </ul>
 	      <div class="dropdown">

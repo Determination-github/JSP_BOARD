@@ -30,7 +30,7 @@
     			} else if(value == 1) {
     				location.href = "LoginForm.do";
     			} else if(value == 2) {
-    				location.href = ""; //아직 미구현
+    				location.href = "BoardListAction.bo"; //아직 미구현
     			} else if(value == 3) {
     				const link = "https://determination.tistory.com/";
     				window.open(link);

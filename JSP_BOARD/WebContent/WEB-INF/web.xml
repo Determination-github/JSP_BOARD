@@ -5,12 +5,24 @@
 		<servlet-class>jsp.front.controller.MemberController</servlet-class>
 		<init-param>
 			<param-name>propertyConfig</param-name>
-			<param-value>C:\Users\rladn\OneDrive\문서\JSP_BOARD\JSP_BOARD\WebContent\WEB-INF\command\command.properties</param-value>
+			<!-- <param-value>C:\Users\rladn\OneDrive\문서\JSP_BOARD\JSP_BOARD\WebContent\WEB-INF\command\command.properties</param-value> -->
+			<param-value>C:\Users\rladn\OneDrive\문서\JSP_BOARD\JSP_BOARD\src\jsp\member\properties\member.properties</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>MemberController</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-	
+	<servlet>
+		<servlet-name>BoardController</servlet-name>
+		<servlet-class>jsp.front.controller.BoardController</servlet-class>
+		<init-param>
+			<param-name>propertyConfig</param-name>
+			<param-value>C:\Users\rladn\OneDrive\문서\JSP_BOARD\JSP_BOARD\src\jsp\board\properties\board.properties</param-value>		
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BoardController</servlet-name>
+		<url-pattern>*.bo</url-pattern>
+	</servlet-mapping>
 </web-app>

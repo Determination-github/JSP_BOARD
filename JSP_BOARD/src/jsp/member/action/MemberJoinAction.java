@@ -6,8 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import jsp.common.action.Action;
 import jsp.common.action.ActionForward;
-import jsp.member.model.members.MemberBean;
-import jsp.member.model.members.MemberDAO;
+import jsp.member.model.MemberBean;
+import jsp.member.model.MemberDAO;
 
 public class MemberJoinAction implements Action {
 	

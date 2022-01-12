@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import jsp.common.action.Action;
 import jsp.common.action.ActionForward;
-import jsp.member.model.members.MemberDAO;
+import jsp.member.model.MemberDAO;
 
 public class MemberLoginAction implements Action{
 

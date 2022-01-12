@@ -8,8 +8,8 @@ import javax.servlet.http.HttpSession;
 
 import jsp.common.action.Action;
 import jsp.common.action.ActionForward;
-import jsp.member.model.members.MemberBean;
-import jsp.member.model.members.MemberDAO;
+import jsp.member.model.MemberBean;
+import jsp.member.model.MemberDAO;
 
 public class MemberDetailAction implements Action {
 
@@ -19,11 +19,11 @@ public class MemberDetailAction implements Action {
 		HttpSession session = request.getSession();
 		MemberDAO mDAO = MemberDAO.getInstance();
 		
-		String id = (String) session.getAttribute("memberID");
+		String id = (String)session.getAttribute("memberID");
 		
 		MemberBean member = mDAO.inquireData(id);
 		request.setAttribute("memberInfo", member);
-		
+
 		forward.setRedirect(false);
 		forward.setPath("MemberDetail.do");
 		

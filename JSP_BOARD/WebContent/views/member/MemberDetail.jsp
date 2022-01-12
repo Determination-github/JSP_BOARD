@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="jsp.member.model.members.MemberBean" %>
+<%@ page import="jsp.member.model.MemberBean" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
@@ -41,7 +41,6 @@
 			}
 			
 			function detailCheckAction() {
-		    	   
 		    	   let formName = document.detailInfo;
 		    	   
 		    	   let inputPWD = formName.memberPWD.value;
@@ -128,7 +127,7 @@
 		        				<button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="changeDetailView()">메인화면으로 이동</button>
 		        				<button type="button" id="buttonModify" class="btn btn-outline-secondary btn-lg px-4" onclick="btnModify()">회원정보 수정</button>
 		        				<button type="button" id="buttonDelete" class="btn btn-outline-secondary btn-lg px-4" onclick="btnDelete()">회원정보 삭제(탈퇴)</button>
-		        				<input type="submit" id="buttonDelete" class="btn btn-outline-secondary btn-lg px-4" value="확인"></button>
+		        				<input type="submit" id="button" class="btn btn-outline-secondary btn-lg px-4" value="확인"></button>
 	      					</div>
 						</div>
 					</form>

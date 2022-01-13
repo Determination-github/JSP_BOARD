@@ -46,7 +46,7 @@
 	  			<input name="boardSubject" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${board.boardSubject}"/>
 			</div>
 			<div class="input-group mb-3">
-				<input name="boardFile" type="file" class="form-control" id="inputGroupFile02">
+				<input name="newBoardFile" type="file" class="form-control" id="inputGroupFile02">
 				<label class="input-group-text" for="inputGroupFile02">Upload</label>
 			</div>
 			<div class="input-group">

@@ -4,10 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+<title>글 작성 페이지</title>
 	<style type="text/css">
 		.container{
 			margin-top: 100px;
@@ -61,7 +58,5 @@
 			</div>
 		</form>
 	</div>
-	<script src="js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
 </body>
 </html>

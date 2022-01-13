@@ -31,7 +31,7 @@ public class BoardListAction implements Action{
 		
 		HashMap<String, Object> list = new HashMap<String, Object>();
 		list.put("option", option);
-		list.put("conditon", condition);
+		list.put("condition", condition);
 		
 		BoardDAO bDAO = BoardDAO.getInstance();
 		int listCount = bDAO.getBoardListCount(list);

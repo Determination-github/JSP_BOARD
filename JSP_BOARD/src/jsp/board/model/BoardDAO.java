@@ -260,4 +260,173 @@ public class BoardDAO {
 		
 		return result;
 	}
+	
+	public BoardBean getDetail(int num) {
+		BoardBean board = null;
+		
+		DBConnection dbConnection = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			dbConnection = DBConnection.getInstance();
+			conn = dbConnection.getConnection();
+			
+			StringBuffer sql = new StringBuffer();
+			sql.append("SELECT * FROM BOARD WHERE BOARD_NUM = ?");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, num);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				board = new BoardBean();
+				board.setBoardNum(num);
+				board.setBoardID(rs.getString("BOARD_ID"));
+				board.setBoardSubject(rs.getString("BOARD_SUBJECT"));
+				board.setBoardContent(rs.getString("BOARD_CONTENT"));
+				board.setBoardFile(rs.getString("BOARD_FILE"));
+				board.setBoardCount(rs.getInt("BOARD_COUNT"));
+				board.setBoardDate(rs.getDate("BOARD_DATE"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbConnection.freeConnection(conn, pstmt, rs);
+		}
+		
+		return board;
+	}
+	
+	public boolean viewCount(int num) {
+		boolean result = false;
+		
+		DBConnection dbConnection = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			dbConnection = DBConnection.getInstance();
+			conn = dbConnection.getConnection();
+			
+			StringBuffer sql = new StringBuffer();
+			sql.append("UPDATE BOARD SET BOARD_COUNT = BOARD_COUNT+1 WHERE BOARD_NUM = ?");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, num);
+			
+			int updateCount = pstmt.executeUpdate();
+			if(updateCount > 0) {
+				result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbConnection.freeConnection(conn, pstmt);
+		}
+		
+		return result;
+	}
+	
+	public boolean updateBoard(BoardBean board) {
+		boolean result = false;
+		
+		DBConnection dbConnection = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			dbConnection = DBConnection.getInstance();
+			conn = dbConnection.getConnection();
+			
+			StringBuffer sql = new StringBuffer();
+			sql.append("UPDATE BOARD SET ");
+			sql.append("BOARD_SUBJECT = ?,  ");
+			sql.append("BOARD_CONTENT = ?,  ");
+			sql.append("BOARD_FILE = ?, ");
+			sql.append("BOARD_DATE = SYSDATE ");
+			sql.append("WHERE BOARD_NUM = ? ");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, board.getBoardSubject());
+			pstmt.setString(2, board.getBoardContent());
+			pstmt.setString(3, board.getBoardFile());
+			pstmt.setInt(4, board.getBoardNum());
+			
+			int updateCount = pstmt.executeUpdate();
+			if(updateCount > 0) {
+				result = true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbConnection.freeConnection(conn, pstmt);
+		}
+		
+		return result;
+	}
+	
+	public String getFile(int num) {
+		String file = null;
+		
+		DBConnection dbConnection = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			dbConnection = DBConnection.getInstance();
+			conn = dbConnection.getConnection();
+			
+			StringBuffer sql = new StringBuffer();
+			sql.append("SELECT BOARD_FILE FROM BOARD WHERE BOARD_NUM = ?");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				file = rs.getString("BOARD_FILE");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbConnection.freeConnection(conn, pstmt, rs);
+		}
+		
+		return file;
+	}
+	
+	public boolean deleteBoard(int num) {
+		boolean result = false;
+		
+		DBConnection dbConnection = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			dbConnection = DBConnection.getInstance();
+			conn = dbConnection.getConnection();
+			
+			StringBuffer sql = new StringBuffer();
+			sql.append("DELETE FROM BOARD WHERE BOARD_NUM = ? ");
+			
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, num);
+			
+			int updateCount = pstmt.executeUpdate();
+			if(updateCount > 0) {
+				result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbConnection.freeConnection(conn, pstmt);
+		}
+		
+		return result;
+	}
 }

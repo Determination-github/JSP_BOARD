@@ -48,8 +48,6 @@
        
        function signUpCheckAction() {
     	   
-     	  /*  inputID = document.loginInfo.memberID.value;
-     	   inputPWD = document.loginInfo.memberPWD.value; */
      	   let formName = document.signUpInfo;
      	   
      	   let inputEmail = formName.memberEmail.value;
@@ -86,9 +84,7 @@
      	   }
         }
        
-       	function() {
-				
-       	}
+       
    </script>
 </head>
  <body class="text-center">

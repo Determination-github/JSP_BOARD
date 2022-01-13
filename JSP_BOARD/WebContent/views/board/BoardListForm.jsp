@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시판</title>
 <style>
 	#container{
 		position: absolute;
@@ -20,6 +20,10 @@
 		width: 90vw;
 		display: inline-block;
 		vertical-align: middle;
+	}
+	a{
+		text-decoration: none;
+		color: black;
 	}
 	.table-responsive{
 		margin-top: 25px;
@@ -58,7 +62,8 @@
 	          	<c:forEach var="board" items="${arrayList}">
 		            <tr>
 		              <td>${board.boardNum}</td>
-		              <td>${board.boardSubject}</td>
+		              <td><a href="BoardDetailAction.bo?num=${board.boardNum}&page=${page}">
+		              ${board.boardSubject}</a></td>
 		              <td>${board.boardID}</td>
 		              <td>${board.boardDate}</td>
 		              <td>${board.boardCount}</td>
@@ -87,7 +92,7 @@
 			</c:if>
 		  </div>
 		  <div id="searchForm">
-		  	<form action="">
+		  	<form>
 		  		<select name="option">
 		  			<option value="0">제목</option>
 		  			<option value="1">내용</option>
@@ -100,7 +105,7 @@
 		  </div>
 	      <div class="bg-white py-3 px-3 text-center border mt-3">
 		  	<c:if test="${sessionScope.memberID!=null}">
-		  		<input class="w-100 btn btn-lg btn-primary" type="submit" value="글쓰기" onclick="writeBoard()"></input>
+		  		<input class="w-100 btn btn-lg btn-primary" type="button" value="글쓰기" onclick="writeBoard()"></input>
 		  	</c:if>
 		  </div>
 		  

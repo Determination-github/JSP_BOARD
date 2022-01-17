@@ -9,9 +9,9 @@ import jsp.common.action.ActionForward;
 import jsp.member.model.MemberBean;
 import jsp.member.model.MemberDAO;
 
-public class MemberJoinAction implements Action {
+public class MemberSignUpAction implements Action {
 	
-	
+	//회원가입 처리를 위한 Action 클래스
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -30,12 +30,13 @@ public class MemberJoinAction implements Action {
 		//insert 실행
 		mDAO.joinMember(member); 
 		
+		//session에 msg값 세팅하기
+		session.setAttribute("msg", "0");
+		
 		//회원가입 후 화면 전환
 		forward.setRedirect(true);
 		forward.setPath("ResultForm.do");
-		
-		request.getSession().setAttribute("msg", "0");
-		
+	
 		return forward;
 	}
 

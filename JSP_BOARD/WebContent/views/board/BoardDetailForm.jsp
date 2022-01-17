@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>${board.boardSubject}</title>
+	<head>
+	<meta charset="UTF-8">
+	<title>${board.boardSubject}</title>
 	<style type="text/css">
 		.container{
 			margin-top: 100px;
@@ -23,40 +23,49 @@
 	</style>
 	<script type="text/javascript">
 		function detailAction(value) {
-			if(value == 0){
+			if(value == 0)
+			{
 				location.href = "BoardUpdateFormAction.bo?num=${board.boardNum}&page=${page}";
-			} else if(value == 1) {
-				if(confirm("정말로 삭제하시겠습니까?")){
+			} 
+			else if(value == 1) 
+			{
+				if(confirm("정말로 삭제하시겠습니까?"))
+				{
 					location.href="BoardDeleteAction.bo?num=${board.boardNum}";
 					return true;
-				} else {
+				} 
+				else 
+				{
 					return false;
 				}
-			} else if(value == 2) {
-				location.href = "BoardListAction.bo";
+			} 
+			else if(value == 2) 
+			{
+				location.href = "BoardListAction.bo?page=${page}";
 			}
-		}
+	}
 	</script>
-</head>
-<body>
+	</head>
+	<body>
 	<div class="container">
 		<input type="hidden" name="boardID" value="${sessionScope.memberID}">
+		<!-- 제목, 작성날짜  -->
 		<div class="input-group">
-  			<input id="subject" name="boardSubject" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${board.boardSubject}" readonly/>
+			<input id="subject" name="boardSubject" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="${board.boardSubject}" readonly/>
 			<span class="input-group-text" id="basic-addon2">${board.boardDate}</span>			
 		</div>
+		<!-- 첨부파일 -->
 		<div class="input-group mb-3">
 			<span type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-			<a href="FileDownloadAction.bo?file_name=${board.boardFile}">
-					${board.boardFile}
-			</a>
+				<a href="BoardDownloadAction.bo?boardFile=${board.boardFile}">${board.boardFile}</a>
 			</span>
 			<label class="input-group-text" for="inputGroupFile02">첨부파일</label>
 		</div>
+		<!-- 내용 -->
 		<div class="input-group">
-  			<textarea id="content" name="boardContent" class="form-control" aria-label="With textarea" rows="20" readonly>${board.boardContent}</textarea>
+			<textarea id="content" name="boardContent" class="form-control" aria-label="With textarea" rows="20" readonly>${board.boardContent}</textarea>
 		</div>
-		
+		<!-- 로그인 정보와 boardID 값이 일치하면 수정/삭제 버튼 출력  -->
 		<div id="btn" class="d-grid gap-2 d-sm-flex justify-content-sm-center">
 			<c:if test="${sessionScope.memberID!=null}">
 				<c:if test="${sessionScope.memberID == board.boardID}">
@@ -67,5 +76,5 @@
 			<button type="button" class="btn btn-outline-secondary btn-sm px-3" onclick="detailAction(2)">목록</button>
 		</div>
 	</div>
-</body>
+	</body>
 </html>

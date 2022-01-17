@@ -6,9 +6,9 @@ import javax.servlet.http.HttpSession;
 
 import jsp.common.action.Action;
 import jsp.common.action.ActionForward;
-import jsp.member.model.MemberBean;
 import jsp.member.model.MemberDAO;
 
+//회원정보 삭제 담당 Action 클래스
 public class MemberDeleteAction implements Action {
 
 	@Override
@@ -24,14 +24,13 @@ public class MemberDeleteAction implements Action {
 		mDAO.deleteMember(id);
 		
 		//세션에 담긴 아이디값 삭제
-		request.getSession().removeAttribute("memberID");
+		session.removeAttribute("memberID");
 		
 		forward.setRedirect(true);
 		forward.setPath("ResultForm.do");
 		
-		request.getSession().setAttribute("msg", "2");
+		session.setAttribute("msg", "2");
 		
 		return forward;
 	}
-	
 }

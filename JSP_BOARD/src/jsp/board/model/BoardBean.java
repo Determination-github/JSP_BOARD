@@ -11,20 +11,6 @@ public class BoardBean {
 	private int boardCount;
 	private Date boardDate;
 	
-	public BoardBean() {
-		
-	}
-	
-	public BoardBean(int boardNum, String boardID, String boardSubject, String boardContent, String boardFile,
-			int boardCount, Date boardDate) {
-		this.boardNum = boardNum;
-		this.boardID = boardID;
-		this.boardSubject = boardSubject;
-		this.boardContent = boardContent;
-		this.boardFile = boardFile;
-		this.boardCount = boardCount;
-		this.boardDate = boardDate;
-	}
 
 	public int getBoardNum() {
 		return boardNum;

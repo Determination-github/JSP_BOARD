@@ -22,6 +22,8 @@ public class MemberDAO {
 		} return instance;
 	}
 	
+	
+	//아이디를 이용해 현재 회원 정보를 가져오기
 	public MemberBean inquireData(String id) {
 		DBConnection dbConnection = null;
 		Connection conn = null;
@@ -32,7 +34,7 @@ public class MemberDAO {
 		try {
 			dbConnection = DBConnection.getInstance();			
 			StringBuffer sql = new StringBuffer(); //멀티쓰레드에서는 StringBuffer가 안전
-			sql.append("SELECT * FROM JSP_MEMBER WHERE MEMBER_ID=?");
+			sql.append("SELECT * FROM MEMBER WHERE MEMBER_ID=?");
 			
 			conn = dbConnection.getConnection();
 			pstmt = conn.prepareStatement(sql.toString());
@@ -57,6 +59,7 @@ public class MemberDAO {
 	}
 	
 	
+	//로그인할 때 아이디와 비밀번호가 일치하는지 확인하는 메서드
 	public int loginCheck(String id, String pwd) {
 		
 		int result = 0;
@@ -70,7 +73,7 @@ public class MemberDAO {
 		try {
 			dbConnection = DBConnection.getInstance();			
 			StringBuffer sql = new StringBuffer(); //멀티쓰레드에서는 StringBuffer가 안전
-			sql.append("SELECT MEMBER_PWD FROM JSP_MEMBER WHERE MEMBER_ID=?");
+			sql.append("SELECT MEMBER_PWD FROM MEMBER WHERE MEMBER_ID=?");
 			
 			conn = dbConnection.getConnection();
 			pstmt = conn.prepareStatement(sql.toString());
@@ -98,6 +101,8 @@ public class MemberDAO {
 		return result;
 	}
 	
+	
+	//회원가입을 위한 메서드
 	public void joinMember(MemberBean member) throws SQLException{
 		int result = 0;
 		DBConnection dbConnection = null;
@@ -108,7 +113,7 @@ public class MemberDAO {
 		try {
 			dbConnection = DBConnection.getInstance();
 			StringBuffer sql = new StringBuffer();
-			sql.append("INSERT INTO JSP_MEMBER(MEMBER_ID, MEMBER_PWD, MEMBER_EMAIL, MEMBER_NAME) VALUES (?, ?, ?, ?)");
+			sql.append("INSERT INTO MEMBER(MEMBER_ID, MEMBER_PWD, MEMBER_EMAIL, MEMBER_NAME) VALUES (?, ?, ?, ?)");
 			
 			conn = dbConnection.getConnection();
 			pstmt = conn.prepareStatement(sql.toString());
@@ -126,6 +131,8 @@ public class MemberDAO {
 		}
 	}
 	
+	
+	//회원정보 업데이트를 위한 메서드
 	public void updateMember(MemberBean member) throws SQLException{
 		DBConnection dbConnection = null;
 		Connection conn = null;
@@ -133,7 +140,7 @@ public class MemberDAO {
 		
 		try {
 			StringBuffer sql = new StringBuffer();
-			sql.append("UPDATE JSP_MEMBER SET MEMBER_PWD=?, MEMBER_EMAIL=?, MEMBER_NAME=? WHERE MEMBER_ID=?");
+			sql.append("UPDATE MEMBER SET MEMBER_PWD=?, MEMBER_EMAIL=?, MEMBER_NAME=? WHERE MEMBER_ID=?");
 			
 			dbConnection = DBConnection.getInstance();
 			conn = dbConnection.getConnection();
@@ -152,6 +159,8 @@ public class MemberDAO {
 		}
 	}
 	
+	
+	//훼원정보 삭제를 위한 메서드
 	public void deleteMember(String id) {
 		DBConnection dbConnection = null;
 		Connection conn = null;
@@ -159,7 +168,7 @@ public class MemberDAO {
 		
 		try {
 			StringBuffer sql = new StringBuffer();
-			sql.append("DELETE FROM JSP_MEMBER WHERE MEMBER_ID=?");
+			sql.append("DELETE FROM MEMBER WHERE MEMBER_ID=?");
 			
 			dbConnection = DBConnection.getInstance();
 			conn = dbConnection.getConnection();

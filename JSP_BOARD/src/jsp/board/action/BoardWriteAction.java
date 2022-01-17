@@ -21,6 +21,7 @@ public class BoardWriteAction implements Action {
 		
 		//업로드 파일 사이즈
 		int fileSize = 5*1024*1024;
+		
 		//업로드될 폴더 경로
 		String uploadPath = request.getServletContext().getRealPath("/UploadFolder");
 		System.out.println("uploadpath는? "+uploadPath);
@@ -29,7 +30,10 @@ public class BoardWriteAction implements Action {
 			//파일업로드
 			MultipartRequest multi = new MultipartRequest(request, uploadPath, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 			
-			String fileName = "";
+			//파일 이름 초기화
+			String fileName  = "";
+			
+			//파일 이름 가져오기
 			Enumeration<String> names = multi.getFileNames();
 			
 			if(names.hasMoreElements()) {
@@ -57,6 +61,4 @@ public class BoardWriteAction implements Action {
 		}
 		return forward;
 	}
-
-	
 }

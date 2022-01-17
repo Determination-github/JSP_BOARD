@@ -1,7 +1,5 @@
 package jsp.member.action;
 
-import java.sql.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,6 +9,7 @@ import jsp.common.action.ActionForward;
 import jsp.member.model.MemberBean;
 import jsp.member.model.MemberDAO;
 
+//회원정보 상세보기 구현 클래스
 public class MemberDetailAction implements Action {
 
 	@Override
@@ -19,16 +18,14 @@ public class MemberDetailAction implements Action {
 		HttpSession session = request.getSession();
 		MemberDAO mDAO = MemberDAO.getInstance();
 		
-		String id = (String)session.getAttribute("memberID");
+		String id = (String)session.getAttribute("memberID"); //세션에서 아이디 가져오기
 		
-		MemberBean member = mDAO.inquireData(id);
-		request.setAttribute("memberInfo", member);
+		MemberBean member = mDAO.inquireData(id); //아이디를 파라미터로 해서 회원정보 모두 가져오기
+		request.setAttribute("memberInfo", member); //회원정보를 전달
 
 		forward.setRedirect(false);
-		forward.setPath("MemberDetail.do");
+		forward.setPath("MemberDetail.do"); //MemberDetail.do로 이동
 		
 		return forward;
 	}
-	
-
 }

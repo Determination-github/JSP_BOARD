@@ -1,6 +1,5 @@
 package jsp.common.util;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,8 +11,6 @@ public class DBConnection {
 	Connection conn = null;
 	//자바코드에서 작성한 select문을 전달함
 	Statement  stmt = null;
-	//프로시저를 전담하는 인터페이스 선언
-	CallableStatement cstmt = null;
 	//오라클에게 전달된 select문을 처리한 결과를 꺼내기 위해서 커서를 조작해야 하는데
 	//그 때 커서를 이동하는데 필요한 메소드를 선언한 인터페이스
 	ResultSet  rs   = null;
@@ -22,15 +19,15 @@ public class DBConnection {
 	public static final String _URL    = "jdbc:oracle:thin:@127.0.0.1:1522:ORCL";
 	public static final String _USER   = "jsp_board";
 	public static final String _PW     = "1234";
-	private static DBConnection dbMgr = null;
+	private static DBConnection db= null;
 	
 	//싱글톤 패턴
 	private DBConnection() {}
 	public static DBConnection getInstance() {
-		if(dbMgr == null) {
-			dbMgr = new DBConnection();
+		if(db == null) {
+			db = new DBConnection();
 		}
-		return dbMgr;
+		return db;
 	}
 	
 	public Connection getConnection() {
@@ -68,25 +65,4 @@ public class DBConnection {
 		}
 	}
 	
-	
-	//CallableStatement 프로시저에 사용
-	public void freeConnection(Connection conn, CallableStatement cstmt) {//INSERT|UPDATE|DELETE
-		try {
-			if(cstmt !=null) cstmt.close();
-			if(conn !=null) conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	
-	//Statement 정적쿼리 처리에 사용
-	public void freeConnection(Connection con, Statement stmt) {//INSERT|UPDATE|DELETE
-		try {
-			if(stmt !=null) stmt.close();
-			if(con !=null) con.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 }

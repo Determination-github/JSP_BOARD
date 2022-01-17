@@ -5,7 +5,6 @@
 		<servlet-class>jsp.front.controller.MemberController</servlet-class>
 		<init-param>
 			<param-name>propertyConfig</param-name>
-			<!-- <param-value>C:\Users\rladn\OneDrive\문서\JSP_BOARD\JSP_BOARD\WebContent\WEB-INF\command\command.properties</param-value> -->
 			<param-value>C:\Users\rladn\OneDrive\문서\JSP_BOARD\JSP_BOARD\src\jsp\member\properties\member.properties</param-value>
 		</init-param>
 	</servlet>

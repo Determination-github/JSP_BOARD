@@ -1,9 +1,9 @@
-# JSP 게시판
+# 💻JSP 게시판
 **MVC MODEL 2**로 구현한 **JSP/Servlet 게시판**입니다.
 
 <br>
 
-##  구현 기능
+## 🛠구현 기능
 
  - 로그인
  - 로그아웃
@@ -16,7 +16,7 @@
 
 <br>
 
-## 개발 환경 및 기술
+## 🛠개발 환경 및 기술
 
  - Window 10 64bit
  - eclipse
@@ -29,7 +29,7 @@
  
 <br>
 
-## 게시판 구성
+## 🛠게시판 구성
 
 게시판은 크게 회원/게시글 화면으로 나뉩니다.
 
@@ -39,23 +39,23 @@
  
  <br>
 
-## 웹 프로젝트 구조
+## 🛠웹 프로젝트 구조
 ![웹프로젝트](https://user-images.githubusercontent.com/92250627/150120415-ace249a4-7da2-4513-9b1b-5f787e0725be.png)
 
 <br>
 
-## UML 구조
+## 🛠UML 구조
 ![JSP UML](https://user-images.githubusercontent.com/92250627/150120481-b9d58c1c-7dfd-4210-802e-9ce5993987c0.gif)
 
  - 회원 관련 클래스 다이어그램
  - 게시글 관련 클래스 다이어그램
 <br>
 
-## JSP/Servlet
+## 🛠JSP/Servlet
 
 <br>
 
-> 공통부분
+> 🔉공통부분
 <img width="140" alt="공통부분" src="https://user-images.githubusercontent.com/92250627/150121893-322191e2-230d-4774-bff2-0db64a298cbc.PNG">
 
 <br>
@@ -67,7 +67,7 @@
  
 <br>
 
-> 회원부분
+> 🔉회원부분
 <img width="175" alt="회원부분" src="https://user-images.githubusercontent.com/92250627/150121774-247c3285-92b4-4894-89ea-47e33aa99dee.PNG">
 <img width="144" alt="회원부분2" src="https://user-images.githubusercontent.com/92250627/150121796-883ede90-5ef0-4d06-9d05-7f359ddf1932.PNG">
 
@@ -91,7 +91,7 @@
 	 
 <br>
 
-> 게시글부분
+> 🔉게시글부분
 <img width="188" alt="게시글부분" src="https://user-images.githubusercontent.com/92250627/150121826-fe023683-d12a-43f1-9bd8-54121c32ee02.PNG">
 <img width="151" alt="게시글부분2" src="https://user-images.githubusercontent.com/92250627/150121835-22f30441-ec5f-406b-8a2a-fa00e172ef6a.PNG">
 
@@ -116,7 +116,7 @@
 	 
 <br>
 
-> 뷰 페이지
+> 🔉뷰 페이지
 <img width="161" alt="뷰페이지" src="https://user-images.githubusercontent.com/92250627/150121872-f0879ed9-93bd-4eab-8869-116d651e7412.PNG">
 
 <br>
@@ -141,15 +141,15 @@
 	
 <br>
 
-## 테이블/시퀀스
+## 🛠테이블/시퀀스
 
-### 테이블 구조
+### 📑테이블 구조
 <img width="20%" alt="테이블 구조 1" src="https://user-images.githubusercontent.com/92250627/150120680-fecc72c2-10e5-4ef1-a15f-014c7d6a912a.PNG">
   - MEMBER와 BOARD로 구성
 
 <br>
 
-### MEMBER
+### 📑MEMBER
  
 - 멤버 테이블 구조
  <img width="50%" alt="멤버테이블 1" src="https://user-images.githubusercontent.com/92250627/150121000-9862f2bf-7f26-4992-a1ab-a80a58737348.PNG">
@@ -165,7 +165,7 @@
   
 <br>
 
-### BOARD
+### 📑BOARD
 
 
 - 게시글 테이블 구조 
@@ -185,7 +185,7 @@
 
 <br>
 
-### 시퀀스
+### 📑시퀀스
 
 <br> 
 
@@ -197,7 +197,7 @@
 
 <br>
 
-## 동작 화면
+## 🛠동작 화면
 
  1. 웰컴 페이지 입니다. 회원가입 화면으로 이동해보겠습니다.
 <br>
@@ -289,13 +289,13 @@
 <br>
 <img width="949" alt="25게시글삭제확인" src="https://user-images.githubusercontent.com/92250627/150133128-ff7c2690-45c1-4870-8046-75898fff8dc4.PNG">
 
-## 자세한 설명
+## 🛠자세한 설명
 게시판 구현에 대한 자세한 설명은 블로그에 자세하게 정리해뒀습니다.
 해당 웹사이트가 어떻게 동작하는지 이해하고 싶은 분들은
 블로그 링크를 통해 블로그에서 내용을 확인해주세요!
 [***블로그 이동하기***](https://determination.tistory.com/entry/JSP-%EA%B2%8C%EC%8B%9C%ED%8C%90-Model-2-JSPServlet-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EB%A7%8C%EB%93%A4%EA%B8%B010-%EC%B5%9C%EC%A2%85)
 
-## 작성자
+## 🛠작성자
 
 👩‍💻 김웅섭
  - BLOG : [Determination](https://determination.tistory.com/)

@@ -100,9 +100,6 @@ pageEncoding="UTF-8"%>
 							<div class="form-floating mb-3">
 								<input class="form-control" name="memberID" placeholder="ID" type="text" /><label>아이디</label>
 							</div>
-							<div class="mb-2">
-								<button class="btn btn-primary fw-bold w-100 bg-gradient" type="submit" onclick="idCheck()">아이디 중복 확인</button>
-							</div>
 							<div class="form-floating mb-3">
 								<input class="form-control" name="memberPWD" placeholder="Password" type="password" /><label>비밀번호</label>
 							</div>
